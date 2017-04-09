@@ -10,20 +10,20 @@
 
 //Cuenta * CuentasB;
 
-void anadirCuenta(Cuenta * CuentasB, int liq, int cli){
+void anadirCuenta(Cuenta * CuentasB, int tamanyo, int liq, int cli){
 
 	Cuenta c;
 	c.cliente = cli;
 	c.liquidez = liq;
-	CuentasB[sizeof(CuentasB)+1] = c;
-
+	CuentasB[tamanyo] = c;
+	printf("Exito");
 }
 
-void eliminarCuenta(Cuenta * CuentasB, int cli){
+void eliminarCuenta(Cuenta * CuentasB, int tamanyo, int cli){
 
 	int i = 0;//Contador del for
 	int t = 0;//Booleano. Si es 0 es no y si es 1 es si
-	while(i < sizeof(CuentasB) && t == 0){
+	while(i < tamanyo && t == 0){
 		if(CuentasB[i].cliente == cli){
 			t = 1;
 		}else{
@@ -34,27 +34,28 @@ void eliminarCuenta(Cuenta * CuentasB, int cli){
 		printf("El cliente %i no existe", cli);
 	}else{
 		//remove(CuentasB[i]);
-		while(i < sizeof(CuentasB)){
+		while(i < tamanyo){
 			CuentasB[i] = CuentasB[i +1];
 			i++;
 		}
 		printf("El cliente %i ha sido eliminado con exito", cli);
 
 	}
+	printf("Exito");
 }
 
-void transaccion(Cuenta * CuentasB, int cliA, int cliB, int cant){
+void transaccion(Cuenta * CuentasB,int tamanyo, int cliA, int cliB, int cant){
 
 	int i, j;
 	int t = 0, t1 = 0;
-	while(i < sizeof(CuentasB) && t == 0){
+	while(i < tamanyo && t == 0){
 		if(CuentasB[i].cliente == cliA){
 			t = 1;
 		}else{
 			i++;
 		}
 	}
-	while(j < sizeof(CuentasB) && t1 == 0){
+	while(j < tamanyo && t1 == 0){
 		if(CuentasB[j].cliente == cliB){
 			t1 = 1;
 		}else{
@@ -67,7 +68,7 @@ void transaccion(Cuenta * CuentasB, int cliA, int cliB, int cant){
 		CuentasB[j].liquidez = CuentasB[j].liquidez + cant;
 		CuentasB[i].liquidez = CuentasB[i].liquidez - cant;
 	}
-
+	printf("Exito");
 }
 
 void guardarAFichero(){
