@@ -9,6 +9,6 @@
 #define USUARIO_H_
 #include "Banco.h"
 
-void ingresarDinero(int dinero,Cuenta c);
-void sacarDinero(int dinero,Cuenta c);
+void ingresarDinero(int dinero, Cuenta c);
+void sacarDinero(int dinero, Cuenta c);
 #endif /* USUARIO_H_ */

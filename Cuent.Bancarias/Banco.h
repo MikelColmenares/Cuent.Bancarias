@@ -13,8 +13,15 @@ typedef struct{
 	int cliente;
 }Cuenta;
 
-void eliminarCuenta(Cuenta * CuentasB, int tamanyo, int cli);
-void anadirCuenta(Cuenta * CuentasB, int tamanyo,int liq, int cli);
-void transaccion(Cuenta * CuentasB, int tamanyo,int cliA, int cliB, int cant);
+typedef struct{
+	Cuenta *cuentas;
+	int numCuentas;
+}Cuentas;
+
+void eliminarCuenta(Cuentas * CuentasB, int cli);
+void anadirCuenta(Cuentas * CuentasB, int liq, int cli);
+void transaccion(Cuentas * CuentasB, int cliA, int cliB, int cant);
+void eliminarCuenta1(Cuentas * CuentasB, int cli);
+void buscarCuenta(Cuentas * CuentasB, int cli);
 
 #endif /* BANCO_H_ */

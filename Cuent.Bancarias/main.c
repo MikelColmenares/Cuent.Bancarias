@@ -10,21 +10,26 @@
 
 int main(void)
 {
-	Cuenta c[6];
-	c[1].cliente=111;c[1].liquidez=10000;
-	c[2].cliente=222;c[2].liquidez=5000;
-	c[3].cliente=333;c[3].liquidez=30000;
-	c[4].cliente=444;c[4].liquidez=23012;
-	c[5].cliente=555;c[5].liquidez=54623;
-	c[6].cliente=666;c[6].liquidez=5642356;
+	Cuentas cu;
+	cu.numCuentas = 6;
+	cu.cuentas[0].cliente=111; cu.cuentas[0].liquidez=10000;
+	cu.cuentas[1].cliente=222; cu.cuentas[1].liquidez=5000;
+	cu.cuentas[2].cliente=333; cu.cuentas[2].liquidez=30000;
+	cu.cuentas[3].cliente=444; cu.cuentas[3].liquidez=23012;
+	cu.cuentas[4].cliente=555; cu.cuentas[4].liquidez=54623;
+	cu.cuentas[5].cliente=666; cu.cuentas[5].liquidez=5642356;
 
-	anadirCuenta(c, 6, 777, 6500);
-	printf("\n");
-	transaccion(c, 7, 111, 222, 500);
-	printf("\n");
-	eliminarCuenta(c, 7, 666);
-	printf("\n");
-	transaccion(c, 7, 111, 222, 500);
+	buscarCuenta(&cu, 111);
+	anadirCuenta(&cu, 5544, 777);
+	eliminarCuenta1(&cu, 777);
+	transaccion(&cu, 111, 222, 500);
+	buscarCuenta(&cu, 111);
+	//printf("\n");
+	//	transaccion(&cu, 7, 111, 222, 500);
+	//	printf("\n");
+	//	eliminarCuenta(&cu, 7, 666);
+	//	printf("\n");
+	//	transaccion(&cu, 6, 111, 222, 500);
 	char* resp;
 	fflush(stdout);
 	printf("Quien eres un usuario(u) o un trabajador del banco(t)?\n");
@@ -49,9 +54,10 @@ int main(void)
 	pf=fopen("SALIDA.TXT","w");
 	    if(pf!=(FILE*)NULL)
 	    {
-	        for(i=0; i<sizeof(c) ;i++)
+	    	fprintf(pf,"Numero de cuentas actual: %i \n", cu.numCuentas);
+	        for(i=0; i<sizeof(cu) ;i++)
 	        {
-	            fprintf(pf,"Cliente %d tiene %d de saldo \n", 111, 111);
+	        	fprintf(pf,"Cliente %d tiene %d de saldo \n", 111, 111);
 	        }
 	    }
 

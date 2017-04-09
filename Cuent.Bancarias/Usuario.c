@@ -8,10 +8,12 @@
 #include "Banco.h"
 #include <stdio.h>
 
-void ingresarDinero(int dinero,Cuenta c){
+void ingresarDinero(int dinero, Cuenta c)
+{
 	c.liquidez = c.liquidez + dinero;
 }
 
-void sacarDinero(int dinero,Cuenta c){
+void sacarDinero(int dinero, Cuenta c)
+{
 	c.liquidez = c.liquidez - dinero;
 }
