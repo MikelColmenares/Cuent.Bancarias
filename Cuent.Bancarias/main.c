@@ -112,7 +112,7 @@ int main(void) {
 		for (i = 0; i < cu.numCuentas; i++) {
 			int a = cu.cuentas[i].cliente;
 			int b = cu.cuentas[i].liquidez;
-			fprintf(pf, "Cliente %d tiene %d de saldo \n", a, b);
+			fprintf(pf, "Cliente: %i \t Saldo: %i\n", a, b);
 		}
 	}
 
