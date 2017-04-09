@@ -70,6 +70,20 @@ void transaccion(Cuenta * CuentasB, int cliA, int cliB, int cant){
 
 }
 
+void guardarAFichero(){
+    FILE *pf;
+    int i;
+	pf=fopen("SALIDA.TXT","w");
+	    if(pf!=(FILE*)NULL)
+	    {
+	        for(i=0; i<10 ;i++)
+	        {
+	            fprintf(pf,"Cliente %i tiene %i de saldo \n", 111, 222);
+	        }
+	    }
+
+	    fclose(pf);
+}
 
 
 

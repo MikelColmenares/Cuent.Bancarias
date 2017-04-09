@@ -34,8 +34,20 @@ int main(void)
 		break;
 	}
 
+	//escribir a fichero
+    FILE *pf;
+    int i;
+	pf=fopen("SALIDA.TXT","w");
+	    if(pf!=(FILE*)NULL)
+	    {
+	        for(i=0; i<sizeof(c) ;i++)
+	        {
+	            fprintf(pf,"Cliente %i tiene %i de saldo \n", c[i].cliente, c.liquidez);
+	        }
+	    }
 
+	    fclose(pf);
 
-
+	return 0;
 }
 
