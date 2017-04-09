@@ -32,84 +32,87 @@ int main(void) {
 	cuenta1.cliente = 111;
 	cuenta1.liquidez = 75000;
 
-	int opc = 0, opcu = 0, opct = 0;
-	do {
+//	int opc = 0, opcu = 0, opct = 0;
+//	do {
+//
+//		printf("MENU DE OPCIONES\n\n");
+//		printf("1. Usuario\n");
+//		printf("2. Trabajador\n");
+//		printf("3. Salir");
+//		fflush(stdout);
+//		printf("Escoge una opcion: \n\n");
+//		scanf("%d", &opc);
+//		fflush(stdout);
+//		switch (opc) {
+//		case 1:
+//			printf("Hola usuario !!!\n\n");
+//			do {
+//				printf("MENU DE CLIENTE");
+//				printf("1. Ingresar dinero en la cuenta.\n");
+//				printf("2. Sacar dinero de la cuenta.\n");
+//				printf("3. Salir");
+//				fflush(stdout);
+//				printf("Escoge una opcion: \n\n");
+//				scanf("%d", &opcu);
+//				switch (opcu) {
+//				case 1:
+//					ingresarDinero(100, cuenta1);
+//					break;
+//				case 2:
+//					sacarDinero(100, cuenta1);
+//					break;
+//				default:
+//					break;
+//				}
+//			} while (opct != 3);
+//			break;
+//		case 2:
+//			printf("Hola trabajador !!!\n\n");
+//			do {
+//				printf("MENU DE TRABAJADOR DEL BANCO");
+//				printf("1. Añadir cuenta\n");
+//				printf("2. Eliminar cuenta.\n");
+//				printf("3. Movimiento de saldo.\n");
+//				printf("4. Buscar Cuenta.\n");
+//				printf("5. Salir");
+//				fflush(stdout);
+//				printf("Escoge una opcion: \n\n");
+//				scanf("%d", &opct);
+//				switch (opct) {
+//				case 1:
+//					anadirCuenta(&cu, 4500, 999);
+//					break;
+//				case 2:
+//					eliminarCuenta1(&cu, 555);
+//					break;
+//				case 3:
+//					transaccion(&cu, 111, 222, 750);
+//					break;
+//				case 4:
+//					buscarCuenta(&cu, 222);
+//					break;
+//				default:
+//					break;
+//				}
+//			} while (opct != 5);
+//			break;
+//		default:
+//			break;
+//		}
+//
+//	} while (opc != 3);
 
-		printf("MENU DE OPCIONES\n\n");
-		printf("1. Usuario\n");
-		printf("2. Trabajador\n");
-		printf("3. Salir");
-		fflush(stdout);
-		printf("Escoge una opcion: \n\n");
-		scanf("%d", &opc);
-		fflush(stdout);
-		switch (opc) {
-		case 1:
-			printf("Hola usuario !!!\n\n");
-			do {
-				printf("MENU DE CLIENTE");
-				printf("1. Ingresar dinero en la cuenta.\n");
-				printf("2. Sacar dinero de la cuenta.\n");
-				printf("3. Salir");
-				fflush(stdout);
-				printf("Escoge una opcion: \n\n");
-				scanf("%d", &opcu);
-				switch (opcu) {
-				case 1:
-					ingresarDinero(100, cuenta1);
-					break;
-				case 2:
-					sacarDinero(100, cuenta1);
-					break;
-				default:
-					break;
-				}
-			} while (opct != 3);
-			break;
-		case 2:
-			printf("Hola trabajador !!!\n\n");
-			do {
-				printf("MENU DE TRABAJADOR DEL BANCO");
-				printf("1. Añadir cuenta\n");
-				printf("2. Eliminar cuenta.\n");
-				printf("3. Movimiento de saldo.\n");
-				printf("4. Buscar Cuenta.\n");
-				printf("5. Salir");
-				fflush(stdout);
-				printf("Escoge una opcion: \n\n");
-				scanf("%d", &opct);
-				switch (opct) {
-				case 1:
-					anadirCuenta(&cu, 4500, 999);
-					break;
-				case 2:
-					eliminarCuenta1(&cu, 555);
-					break;
-				case 3:
-					transaccion(&cu, 111, 222, 750);
-					break;
-				case 4:
-					buscarCuenta(&cu, 222);
-					break;
-				default:
-					break;
-				}
-			} while (opct != 5);
-			break;
-		default:
-			break;
-		}
-
-	} while (opc != 3);
-
+	eliminarCuenta1(&cu, 333);
 	//escribir a fichero
 	FILE *pf;
 	int i;
 	pf = fopen("SALIDA.TXT", "w");
 	if (pf != (FILE*) NULL) {
 		fprintf(pf, "Numero de cuentas actual: %i \n", cu.numCuentas);
-		for (i = 0; i < sizeof(cu); i++) {
-			fprintf(pf, "Cliente %d tiene %d de saldo \n", 111, 111);
+		for (i = 0; i < cu.numCuentas; i++) {
+			int a = cu.cuentas[i].cliente;
+			int b = cu.cuentas[i].liquidez;
+			fprintf(pf, "Cliente %d tiene %d de saldo \n", a, b);
 		}
 	}
 

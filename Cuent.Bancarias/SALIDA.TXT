@@ -1,9 +1,6 @@
-Numero de cuentas actual: 6 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
-Cliente 111 tiene 111 de saldo 
+Numero de cuentas actual: 5 
+Cliente 111 tiene 10000 de saldo 
+Cliente 222 tiene 5000 de saldo 
+Cliente 444 tiene 23012 de saldo 
+Cliente 555 tiene 54623 de saldo 
+Cliente 666 tiene 5642356 de saldo 

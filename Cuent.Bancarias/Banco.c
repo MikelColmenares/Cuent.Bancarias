@@ -72,7 +72,12 @@ void eliminarCuenta1(Cuentas * CuentasB, int cli) { //funciona
 		}
 	}
 	if (enc == 1) {
+		while (i < CuentasB->numCuentas) {
+			CuentasB->cuentas[i] = CuentasB->cuentas[i + 1];
+			i++;
+		}
 		printf("eliminado\n");
+
 		CuentasB->numCuentas = CuentasB->numCuentas - 1;
 	} else {
 		printf("no encontrado\n");
