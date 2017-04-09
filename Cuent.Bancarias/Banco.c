@@ -7,11 +7,10 @@
 #include "Banco.h"
 #include <stdio.h>
 #include "Banco.h"
-#include <stdbool.h>
 
 //Cuenta * CuentasB;
 
-void añadirCuenta(Cuenta * CuentasB, int liq, int cli){
+void anadirCuenta(Cuenta * CuentasB, int liq, int cli){
 
 	Cuenta c;
 	c.cliente = cli;
@@ -34,7 +33,11 @@ void eliminarCuenta(Cuenta * CuentasB, int cli){
 	if (t == 0){
 		printf("El cliente %i no existe", cli);
 	}else{
-		remove(CuentasB[i]);
+		//remove(CuentasB[i]);
+		while(i < sizeof(CuentasB)){
+			CuentasB[i] = CuentasB[i +1];
+			i++;
+		}
 		printf("El cliente %i ha sido eliminado con exito", cli);
 
 	}
@@ -52,7 +55,7 @@ void transaccion(Cuenta * CuentasB, int cliA, int cliB, int cant){
 		}
 	}
 	while(j < sizeof(CuentasB) && t1 == 0){
-		if(CuentasB[j].cliente == cliA){
+		if(CuentasB[j].cliente == cliB){
 			t1 = 1;
 		}else{
 			j++;
