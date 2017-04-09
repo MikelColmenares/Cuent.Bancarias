@@ -5,5 +5,9 @@
  *      Author: 15mik
  */
 #include "Usuario.h"
+#include "Banco.h"
 #include <stdio.h>
 
+void ingresarDinero(int dinero,Cuenta c){
+	c.liquidez=c.liquidez+dinero;
+}
