@@ -16,12 +16,16 @@ int main(void)
 	c[5].cliente=555;c[5].liquidez=54623;
 	c[6].cliente=666;c[6].liquidez=5642356;
 
+	char resp;
+	fflush(stdout);
 	printf("Quien eres un usuario(u) o un trabajador del banco(t)?\n");
-	char a;
+	fflush(stdout);
+	scanf("%c", resp);
 	//scanf(a);
 	//fflush(a);
 	//no recuerdo como era
-	switch(a){
+
+	switch(resp){
 	case 'u':
 		printf("\nHola usuario ");
 		break;
