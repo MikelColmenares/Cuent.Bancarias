@@ -16,14 +16,17 @@ int main(void)
 	c[5].cliente=555;c[5].liquidez=54623;
 	c[6].cliente=666;c[6].liquidez=5642356;
 
-	printf("Quien eres un usuario(u) o un trabajador del banco(t)?");
-	char a=scanf;//no me acuerdo de como era para pillar un char
+	printf("Quien eres un usuario(u) o un trabajador del banco(t)?\n");
+	char a;
+	//scanf(a);
+	//fflush(a);
+	//no recuerdo como era
 	switch(a){
 	case 'u':
-		printf("Hola usuario ");
+		printf("\nHola usuario ");
 		break;
 	case 't':
-		printf("Hola trabajador");
+		printf("\nHola trabajador");
 		break;
 	}
 
