@@ -11,3 +11,7 @@
 void ingresarDinero(int dinero,Cuenta c){
 	c.liquidez=c.liquidez+dinero;
 }
+
+void sacarDinero(int dinero,Cuenta c){
+	c.liquidez=c.liquidez-dinero;
+}
