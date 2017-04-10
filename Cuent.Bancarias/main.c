@@ -44,36 +44,37 @@ int main(void) {
 		printf("MENU DE OPCIONES\n\n");
 		printf("1. Usuario\n");
 		printf("2. Trabajador\n");
-		printf("3. Salir");
-		fflush(stdout);
+		printf("3. Salir\n");
 		printf("Escoge una opcion: \n\n");
-		scanf("%d", &opc);
 		fflush(stdout);
+		scanf("%d", &opc);
+		//fflush(stdout);
 		switch (opc) {
 		case 1:
 			printf("Hola usuario !!!\n\n");
 			do {
-				printf("MENU DE CLIENTE");
+				printf("MENU DE CLIENTE \n");
 				printf("1. Ingresar dinero en la cuenta.\n");
 				printf("2. Sacar dinero de la cuenta.\n");
-				printf("3. Salir");
-				fflush(stdout);
+				printf("3. Salir\n");
 				printf("Escoge una opcion: \n\n");
-				scanf("%d", &opcu);
 				fflush(stdout);
+				scanf("%d", &opcu);
+
 				switch (opcu) {
 				case 1:
-					fflush(stdout);
 					printf("Introduce el importe: \n");
-					scanf("%d", &a);
 					fflush(stdout);
+					scanf("%d", &a);
+					//fflush(stdout);
 					ingresarDinero(a, cuenta1);
 					break;
 				case 2:
-					fflush(stdout);
+					//fflush(stdout);
 					printf("Introduce el importe: \n");
-					scanf("%d", &a);
 					fflush(stdout);
+					scanf("%d", &a);
+//					fflush(stdout);
 					sacarDinero(a, cuenta1);
 					break;
 				default:
@@ -89,41 +90,44 @@ int main(void) {
 				printf("2. Eliminar cuenta.\n");
 				printf("3. Movimiento de saldo.\n");
 				printf("4. Buscar Cuenta.\n");
-				printf("5. Salir");
-				fflush(stdout);
+				printf("5. Salir\n");
 				printf("Escoge una opcion: \n\n");
-				scanf("%d", &opct);
 				fflush(stdout);
+				scanf("%d", &opct);
+//				fflush(stdout);
 				switch (opct) {
 				case 1:
-					fflush(stdout);
+//					fflush(stdout);
 					printf("Introduce el cliente: \n");
 					printf("Introduce la liquidez: \n");
-					scanf("%d %d", &a, &b);
 					fflush(stdout);
+					scanf("%d %d", &a, &b);
+//					fflush(stdout);
 					anadirCuenta(&cu, b, a);
 					break;
 				case 2:
 					printf("Introduce el cliente: \n");
 					fflush(stdout);
 					scanf("%d", &a);
-					fflush(stdout);
+//					fflush(stdout);
 					eliminarCuenta1(&cu, a);
 					break;
 				case 3:
-					fflush(stdout);
+//					fflush(stdout);
 					printf("Introduce el cliente A: \n");
 					printf("Introduce el cliente B: \n");
 					printf("Introduce el importe: \n");
-					scanf("%d %d %d", &a, &b, &c);
 					fflush(stdout);
+					scanf("%d %d %d", &a, &b, &c);
+//					fflush(stdout);
 					transaccion(&cu, a, b, c);
 					break;
 				case 4:
-					fflush(stdout);
+//					fflush(stdout);
 					printf("Introduce el cliente: \n");
-					scanf("%d", &a);
 					fflush(stdout);
+					scanf("%d", &a);
+//					fflush(stdout);
 					buscarCuenta(&cu, a);
 					break;
 				default:
