@@ -6,6 +6,7 @@
  */
 #include "Banco.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "Banco.h"
 #define TAM 20
 
@@ -20,6 +21,7 @@ void anadirCuenta(Cuentas * CuentasB, int liq, int cli) {
 	CuentasB->numCuentas = CuentasB->numCuentas + 1;
 	printf("Exito\n");
 }
+
 void buscarCuenta(Cuentas * CuentasB, int cli) {
 
 	int i = 0, enc = 0;
@@ -37,6 +39,51 @@ void buscarCuenta(Cuentas * CuentasB, int cli) {
 		printf("El cliente %i no existe\n\n", cli);
 	}
 }
+
+Cuenta buscarCuenta1(Cuentas * CuentasB, int cli) {
+
+	int i = 0, enc = 0;
+	while (enc == 0 && i < CuentasB->numCuentas) {
+		if (CuentasB->cuentas[i].cliente == cli) {
+			enc = 1; // en C no existen boolean, por lo tanto cuando queramos usar lo que en java correspondería a un boolean usaremos un int, la similitud sería 1 = true y 0 = false.
+		} else {
+			i++;
+		}
+	}
+	return CuentasB->cuentas[i];
+}
+
+int numeroCuenta(Cuentas * CuentasB, int cli) {
+
+	int i = 0, enc = 0;
+	while (enc == 0 && i < CuentasB->numCuentas) {
+		if (CuentasB->cuentas[i].cliente == cli) {
+			enc = 1; // en C no existen boolean, por lo tanto cuando queramos usar lo que en java correspondería a un boolean usaremos un int, la similitud sería 1 = true y 0 = false.
+		} else {
+			i++;
+		}
+	}
+	return i;
+}
+void actualizarCuenta(Cuentas * CuentasB, int cli, Cuenta c){
+
+	int x = numeroCuenta(&CuentasB, cli);
+	CuentasB->cuentas[x].liquidez = c.liquidez;
+}
+
+int existeCuenta(Cuentas * CuentasB, int cli) {
+
+	int i = 0, enc = 0;
+	while (enc == 0 && i < CuentasB->numCuentas) {
+		if (CuentasB->cuentas[i].cliente == cli) {
+			enc = 1;
+		} else {
+			i++;
+		}
+	}
+	return enc;
+}
+
 void eliminarCuenta(Cuentas * CuentasB, int cli) //no funciona
 {
 
@@ -110,18 +157,5 @@ void transaccion(Cuentas * CuentasB, int cliA, int cliB, int cant) {
 		CuentasB->cuentas[i].liquidez = CuentasB->cuentas[i].liquidez - cant;
 		printf("Exito\n\n");
 	}
-}
-
-void guardarAFichero() {
-	FILE *pf;
-	int i;
-	pf = fopen("SALIDA.TXT", "w");
-	if (pf != (FILE*) NULL) {
-		for (i = 0; i < 10; i++) {
-			fprintf(pf, "Cliente %i tiene %i de saldo \n", 111, 222);
-		}
-	}
-
-	fclose(pf);
 }
 
