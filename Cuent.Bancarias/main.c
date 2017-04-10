@@ -79,7 +79,6 @@ int main(void) {
 							ingresarDinero(a, &cuent);
 							actualizarCuenta(&cu,buscarCuenta1(&cu, cliente).cliente, cuent);
 							printf("El dinero actualizado: %i\n\n", cuent.liquidez);
-							free(a);
 							break;
 						case 2:
 							printf("El dinero actual: %i\n",buscarCuenta1(&cu, cliente).liquidez);
