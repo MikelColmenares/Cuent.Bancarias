@@ -31,10 +31,10 @@ void buscarCuenta(Cuentas * CuentasB, int cli) {
 		}
 	}
 	if (enc == 1) {
-		printf("El cliente %i tiene un total de %i en su cuenta\n",
+		printf("El cliente %i tiene un total de %i en su cuenta\n\n",
 				CuentasB->cuentas[i].cliente, CuentasB->cuentas[i].liquidez);
 	} else {
-		printf("El cliente %i no existe\n", cli);
+		printf("El cliente %i no existe\n\n", cli);
 	}
 }
 void eliminarCuenta(Cuentas * CuentasB, int cli) //no funciona
@@ -76,11 +76,11 @@ void eliminarCuenta1(Cuentas * CuentasB, int cli) { //funciona
 			CuentasB->cuentas[i] = CuentasB->cuentas[i + 1];
 			i++;
 		}
-		printf("eliminado\n");
+		printf("eliminado\n\n");
 
 		CuentasB->numCuentas = CuentasB->numCuentas - 1;
 	} else {
-		printf("no encontrado\n");
+		printf("no encontrado\n\n");
 	}
 
 }
@@ -104,12 +104,12 @@ void transaccion(Cuentas * CuentasB, int cliA, int cliB, int cant) {
 		}
 	}
 	if (t == 0 || t1 == 0) {
-		printf("No se han encontrado los clientea %i o %i", cliA, cliB);
+		printf("No se han encontrado los clientes %i o %i\n", cliA, cliB);
 	} else {
 		CuentasB->cuentas[j].liquidez = CuentasB->cuentas[j].liquidez + cant;
 		CuentasB->cuentas[i].liquidez = CuentasB->cuentas[i].liquidez - cant;
+		printf("Exito\n\n");
 	}
-	printf("Exito\n");
 }
 
 void guardarAFichero() {

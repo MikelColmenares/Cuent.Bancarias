@@ -38,7 +38,8 @@ int main(void) {
 	cuenta1.cliente = 111;
 	cuenta1.liquidez = 75000;
 
-	int opc = 0, opcu = 0, opct = 0, a, b, c;
+	FILE *pf;
+	int opc = 0, opcu = 0, opct = 0, a, b, c,i;
 	do {
 
 		printf("MENU DE OPCIONES\n\n");
@@ -63,34 +64,39 @@ int main(void) {
 
 				switch (opcu) {
 				case 1:
+					printf("El dinero actual: %i\n",cuenta1.liquidez);
 					printf("Introduce el importe: \n");
 					fflush(stdout);
 					scanf("%d", &a);
 					//fflush(stdout);
-					ingresarDinero(a, cuenta1);
+					ingresarDinero(a, &cuenta1);
+					printf("El dinero actualizado: %i\n\n",cuenta1.liquidez);
 					break;
 				case 2:
+					printf("El dinero actual: %i\n",cuenta1.liquidez);
 					//fflush(stdout);
 					printf("Introduce el importe: \n");
 					fflush(stdout);
 					scanf("%d", &a);
 //					fflush(stdout);
-					sacarDinero(a, cuenta1);
+					sacarDinero(a, &cuenta1);
+					printf("El dinero actualizado: %i\n\n",cuenta1.liquidez);
 					break;
 				default:
 					break;
 				}
-			} while (opct != 3);
+			} while (opcu != 3);
 			break;
 		case 2:
 			printf("Hola trabajador !!!\n\n");
 			do {
-				printf("MENU DE TRABAJADOR DEL BANCO");
+				printf("MENU DE TRABAJADOR DEL BANCO\n");
 				printf("1. Añadir cuenta\n");
 				printf("2. Eliminar cuenta.\n");
 				printf("3. Movimiento de saldo.\n");
 				printf("4. Buscar Cuenta.\n");
-				printf("5. Salir\n");
+				printf("5. Guardar en el fichero\n");
+				printf("6. Salir\n");
 				printf("Escoge una opcion: \n\n");
 				fflush(stdout);
 				scanf("%d", &opct);
@@ -130,10 +136,24 @@ int main(void) {
 //					fflush(stdout);
 					buscarCuenta(&cu, a);
 					break;
+				case 5:
+					//escribir a fichero
+					pf = fopen("SALIDA.TXT", "w");
+					if (pf != (FILE*) NULL) {
+						fprintf(pf, "Numero de cuentas actual: %i \n", cu.numCuentas);
+						for (i = 0; i < cu.numCuentas; i++) {
+							int a = cu.cuentas[i].cliente;
+							int b = cu.cuentas[i].liquidez;
+							fprintf(pf, "Cliente: %i \t Saldo: %i\n", a, b);
+						}
+					}
+
+					fclose(pf);
+					break;
 				default:
 					break;
 				}
-			} while (opct != 5);
+			} while (opct != 6);
 			break;
 		default:
 			break;
@@ -141,20 +161,7 @@ int main(void) {
 
 	} while (opc != 3);
 
-	//escribir a fichero
-	FILE *pf;
-	int i;
-	pf = fopen("SALIDA.TXT", "w");
-	if (pf != (FILE*) NULL) {
-		fprintf(pf, "Numero de cuentas actual: %i \n", cu.numCuentas);
-		for (i = 0; i < cu.numCuentas; i++) {
-			int a = cu.cuentas[i].cliente;
-			int b = cu.cuentas[i].liquidez;
-			fprintf(pf, "Cliente: %i \t Saldo: %i\n", a, b);
-		}
-	}
 
-	fclose(pf);
 	printf("\n\n Gacias por utilizar nuestro producto\n Un Saludo !!!");
 	return 0;
 }
