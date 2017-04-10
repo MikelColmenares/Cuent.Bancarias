@@ -1,4 +1,6 @@
-Numero de cuentas actual: 4 
+Numero de cuentas actual: 6 
+Cliente: 111 	 Saldo: 10000
+Cliente: 222 	 Saldo: 5000
 Cliente: 333 	 Saldo: 30000
 Cliente: 444 	 Saldo: 23012
 Cliente: 555 	 Saldo: 54623
