@@ -15,5 +15,9 @@ void ingresarDinero(int dinero, Cuenta *c)
 
 void sacarDinero(int dinero, Cuenta *c)
 {
+	if(c->liquidez - dinero<0){
+		printf("No tienes suficiente dinero en la cuenta :-(\n");
+	}else{
 		c->liquidez = c->liquidez - dinero;
+	}
 }
