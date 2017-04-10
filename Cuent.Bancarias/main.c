@@ -52,6 +52,7 @@ int main(void) {
 	cuenta1.liquidez = 75000;
 
 	FILE *pf;
+	Cuenta cuent;
 	int opc = 0, opcu = 0, opct = 0, a, b, c, i;
 	int cliente;
 	do {
@@ -82,25 +83,33 @@ int main(void) {
 
 					switch (opcu) {
 						case 1:
-							printf("El dinero actual: %i\n", buscarCuenta1(&cu, cliente).liquidez);
+							printf("El dinero actual: %i\n",
+									buscarCuenta1(&cu, cliente).liquidez);
 							printf("Introduce el importe: \n");
 							fflush(stdout);
 							scanf("%d", &a);
 							//fflush(stdout);
-							Cuenta cuent = buscarCuenta1(&cu, cliente);
+							cuent = buscarCuenta1(&cu, cliente);
 							ingresarDinero(a, &cuent);
-							actualizarCuenta(&cu, buscarCuenta1(&cu, cliente).cliente,cuent);
+							actualizarCuenta(&cu,
+									buscarCuenta1(&cu, cliente).cliente, cuent);
 							printf("El dinero actualizado: %i\n\n", cuent.liquidez);
 							break;
 						case 2:
-							printf("El dinero actual: %i\n", buscarCuenta1(&cu, cliente).liquidez);
+							printf("El dinero actual: %i\n",
+									buscarCuenta1(&cu, cliente).liquidez);
 							//fflush(stdout);
 							printf("Introduce el importe: \n");
 							fflush(stdout);
 							scanf("%d", &a);
 	//					fflush(stdout);
-							sacarDinero(a, &cuenta1);
-							printf("El dinero actualizado: %i\n\n",	buscarCuenta1(&cu, cliente).liquidez);
+							cuent = buscarCuenta1(&cu, cliente);
+							ingresarDinero(a, &cuent);
+							actualizarCuenta(&cu,
+									buscarCuenta1(&cu, cliente).cliente, cuent);
+							sacarDinero(a, &cuent);
+							printf("El dinero actualizado: %i\n\n",
+									buscarCuenta1(&cu, cliente).liquidez);
 							break;
 						default:
 							break;
@@ -177,8 +186,8 @@ int main(void) {
 							}
 							fclose(pf);
 							break;
-						default:
-							break;
+					default:
+						break;
 					}
 				} while (opct != 6);
 			} else {
