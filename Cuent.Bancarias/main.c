@@ -9,19 +9,6 @@
 #include "Banco.h"
 #include "Usuario.h"
 
-int existeCuenta1(Cuentas * CuentasB, int cli) {
-
-	int i = 0, enc = 0;
-	while (enc == 0 && i < CuentasB->numCuentas) {
-		if (CuentasB->cuentas[i].cliente == cli) {
-			enc = 1;
-		} else {
-			i++;
-		}
-	}
-	return enc;
-}
-
 int main(void) {
 	Cuentas cu;
 	cu.numCuentas = 6;
@@ -38,18 +25,18 @@ int main(void) {
 	cu.cuentas[5].cliente = 666;
 	cu.cuentas[5].liquidez = 5642356;
 
-	//buscarCuenta(&cu, 111);
-	//anadirCuenta(&cu, 5544, 777);
-	//eliminarCuenta1(&cu, 777);
-	//transaccion(&cu, 111, 222, 500);
-	//buscarCuenta(&cu, 111);
+//	buscarCuenta(&cu, 111);
+//	anadirCuenta(&cu, 5544, 777);
+//	eliminarCuenta1(&cu, 777);
+//	transaccion(&cu, 111, 222, 500);
+//	buscarCuenta(&cu, 111);
 
-	Cuenta cuenta1;
-	cuenta1.cliente = 000;
-	cuenta1.liquidez = 10000;
-	//Cuenta cuenta2;
-	cuenta1.cliente = 111;
-	cuenta1.liquidez = 75000;
+//	Cuenta cuenta1;
+//	cuenta1.cliente = 000;
+//	cuenta1.liquidez = 10000;
+//	//Cuenta cuenta2;
+//	cuenta1.cliente = 111;
+//	cuenta1.liquidez = 75000;
 
 	FILE *pf;
 	Cuenta cuent;
@@ -69,15 +56,15 @@ int main(void) {
 		case 1:
 			printf("Introduce el dni: ");
 			fflush(stdout);
-			scanf("%d", &cliente);
+			scanf("%i", &cliente);
 			if (existeCuenta(&cu, cliente) == 1) {
-				printf("Bienvenido Cliente %d !\n\n", cliente);
+				printf("Bienvenido Cliente %i !\n\n", cliente);
 				do {
 					printf("MENU DE CLIENTE \n");
 					printf("1. Ingresar dinero en la cuenta.\n");
 					printf("2. Sacar dinero de la cuenta.\n");
 					printf("3. Salir\n");
-					printf("Escoge una opcion: \n\n");
+					printf("Escoge una opcion:\n");
 					fflush(stdout);
 					scanf("%d", &opcu);
 
@@ -87,24 +74,20 @@ int main(void) {
 									buscarCuenta1(&cu, cliente).liquidez);
 							printf("Introduce el importe: \n");
 							fflush(stdout);
-							scanf("%d", &a);
-							//fflush(stdout);
+							scanf("%i", &a);
 							cuent = buscarCuenta1(&cu, cliente);
 							ingresarDinero(a, &cuent);
-							actualizarCuenta(&cu,
-									buscarCuenta1(&cu, cliente).cliente, cuent);
+							actualizarCuenta(&cu,buscarCuenta1(&cu, cliente).cliente, cuent);
 							printf("El dinero actualizado: %i\n\n", cuent.liquidez);
+							free(a);
 							break;
 						case 2:
-							printf("El dinero actual: %i\n",
-									buscarCuenta1(&cu, cliente).liquidez);
-							//fflush(stdout);
+							printf("El dinero actual: %i\n",buscarCuenta1(&cu, cliente).liquidez);
 							printf("Introduce el importe: \n");
 							fflush(stdout);
-							scanf("%d", &a);
-	//					fflush(stdout);
+							scanf("%i", &a);
 							cuent = buscarCuenta1(&cu, cliente);
-							ingresarDinero(a, &cuent);
+							sacarDinero(a, &cuent);
 							actualizarCuenta(&cu,
 									buscarCuenta1(&cu, cliente).cliente, cuent);
 							sacarDinero(a, &cuent);
@@ -157,10 +140,16 @@ int main(void) {
 						case 3:
 	//					fflush(stdout);
 							printf("Introduce el cliente A: \n");
+							fflush(stdout);
+							scanf("%d", &a);
 							printf("Introduce el cliente B: \n");
+							fflush(stdout);
+							scanf("%d", &b);
 							printf("Introduce el importe: \n");
 							fflush(stdout);
-							scanf("%d %d %d", &a, &b, &c);
+							scanf("%d", &c);
+							//fflush(stdout);
+							//scanf("%d %d %d", &a, &b, &c);
 	//					fflush(stdout);
 							transaccion(&cu, a, b, c);
 							break;
@@ -186,8 +175,8 @@ int main(void) {
 							}
 							fclose(pf);
 							break;
-					default:
-						break;
+						default:
+							break;
 					}
 				} while (opct != 6);
 			} else {

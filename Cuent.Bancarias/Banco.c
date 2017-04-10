@@ -46,6 +46,7 @@ Cuenta buscarCuenta1(Cuentas * CuentasB, int cli) {
 	while (enc == 0 && i < CuentasB->numCuentas) {
 		if (CuentasB->cuentas[i].cliente == cli) {
 			enc = 1; // en C no existen boolean, por lo tanto cuando queramos usar lo que en java correspondería a un boolean usaremos un int, la similitud sería 1 = true y 0 = false.
+			printf("Se ha encontrado la cuenta.");
 		} else {
 			i++;
 		}
