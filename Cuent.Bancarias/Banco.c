@@ -33,7 +33,7 @@ void buscarCuenta(Cuentas * CuentasB, int cli) {
 		}
 	}
 	if (enc == 1) {
-		printf("El cliente %i tiene un total de %i en su cuenta\n\n",
+		printf("El cliente %i tiene un total de %i€ en su cuenta\n\n",
 				CuentasB->cuentas[i].cliente, CuentasB->cuentas[i].liquidez);
 	} else {
 		printf("El cliente %i no existe\n\n", cli);
@@ -45,8 +45,7 @@ Cuenta buscarCuenta1(Cuentas * CuentasB, int cli) {
 	int i = 0, enc = 0;
 	while (enc == 0 && i < CuentasB->numCuentas) {
 		if (CuentasB->cuentas[i].cliente == cli) {
-			enc = 1; // en C no existen boolean, por lo tanto cuando queramos usar lo que en java correspondería a un boolean usaremos un int, la similitud sería 1 = true y 0 = false.
-			printf("Se ha encontrado la cuenta.");
+			enc = 1;
 		} else {
 			i++;
 		}
@@ -54,22 +53,15 @@ Cuenta buscarCuenta1(Cuentas * CuentasB, int cli) {
 	return CuentasB->cuentas[i];
 }
 
-int numeroCuenta(Cuentas * CuentasB, int cli) {
+void actualizarCuenta(Cuentas * CuentasB, int cli, Cuenta c) {
 
 	int i = 0, enc = 0;
 	while (enc == 0 && i < CuentasB->numCuentas) {
 		if (CuentasB->cuentas[i].cliente == cli) {
-			enc = 1; // en C no existen boolean, por lo tanto cuando queramos usar lo que en java correspondería a un boolean usaremos un int, la similitud sería 1 = true y 0 = false.
-		} else {
-			i++;
+			enc = 1;
+			CuentasB->cuentas[i] = c;
 		}
 	}
-	return i;
-}
-void actualizarCuenta(Cuentas * CuentasB, int cli, Cuenta c){
-
-	int x = numeroCuenta(&CuentasB, cli);
-	CuentasB->cuentas[x].liquidez = c.liquidez;
 }
 
 int existeCuenta(Cuentas * CuentasB, int cli) {

@@ -26,6 +26,5 @@ void buscarCuenta(Cuentas * CuentasB, int cli);
 int existeCuenta(Cuentas * CuentasB, int cli);
 Cuenta buscarCuenta1(Cuentas * CuentasB, int cli);
 void actualizarCuenta(Cuentas * CuentasB, int cli, Cuenta c);
-int numeroCuenta(Cuentas * CuentasB, int cli);
 
 #endif /* BANCO_H_ */

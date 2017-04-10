@@ -25,15 +25,15 @@ int main(void) {
 	cu.cuentas[5].cliente = 666;
 	cu.cuentas[5].liquidez = 5642356;
 
-//	buscarCuenta(&cu, 111);
-//	anadirCuenta(&cu, 5544, 777);
-//	eliminarCuenta1(&cu, 777);
-//	transaccion(&cu, 111, 222, 500);
-//	buscarCuenta(&cu, 111);
+	//buscarCuenta(&cu, 111);
+	//anadirCuenta(&cu, 5544, 777);
+	//eliminarCuenta1(&cu, 777);
+	//transaccion(&cu, 111, 222, 500);
+	//buscarCuenta(&cu, 111);
 
-//	Cuenta cuenta1;
-//	cuenta1.cliente = 000;
-//	cuenta1.liquidez = 10000;
+	Cuenta cuenta1;
+	cuenta1.cliente = 000;
+	cuenta1.liquidez = 10000;
 //	//Cuenta cuenta2;
 //	cuenta1.cliente = 111;
 //	cuenta1.liquidez = 75000;
@@ -57,6 +57,7 @@ int main(void) {
 			printf("Introduce el dni: ");
 			fflush(stdout);
 			scanf("%i", &cliente);
+			fflush(stdin);
 			if (existeCuenta(&cu, cliente) == 1) {
 				printf("Bienvenido Cliente %i !\n\n", cliente);
 				do {
@@ -67,34 +68,50 @@ int main(void) {
 					printf("Escoge una opcion:\n");
 					fflush(stdout);
 					scanf("%d", &opcu);
+					fflush(stdin);
 
 					switch (opcu) {
-						case 1:
-							printf("El dinero actual: %i\n",
-									buscarCuenta1(&cu, cliente).liquidez);
-							printf("Introduce el importe: \n");
-							fflush(stdout);
-							scanf("%i", &a);
-							cuent = buscarCuenta1(&cu, cliente);
-							ingresarDinero(a, &cuent);
-							actualizarCuenta(&cu,buscarCuenta1(&cu, cliente).cliente, cuent);
-							printf("El dinero actualizado: %i\n\n", cuent.liquidez);
-							break;
-						case 2:
-							printf("El dinero actual: %i\n",buscarCuenta1(&cu, cliente).liquidez);
-							printf("Introduce el importe: \n");
-							fflush(stdout);
-							scanf("%i", &a);
-							cuent = buscarCuenta1(&cu, cliente);
-							sacarDinero(a, &cuent);
-							actualizarCuenta(&cu,
-									buscarCuenta1(&cu, cliente).cliente, cuent);
-							sacarDinero(a, &cuent);
-							printf("El dinero actualizado: %i\n\n",
-									buscarCuenta1(&cu, cliente).liquidez);
-							break;
-						default:
-							break;
+					case 1:
+//						printf("El dinero actual: %i\n",buscarCuenta1(&cu, cliente).liquidez);
+//						printf("Introduce el importe: \n");
+//						fflush(stdout);
+//						scanf("%d", &a);
+//						fflush(stdin);
+//						cuent = buscarCuenta1(&cu, cliente);
+//						ingresarDinero(a, &cuent);
+//						actualizarCuenta(&cu,buscarCuenta1(&cu, cliente).cliente, cuent);
+//						printf("El dinero actualizado: %i\n\n", cuent.liquidez);
+
+						printf("El dinero actual: %i\n", cuenta1.liquidez);
+						printf("Introduce el importe: \n");
+						fflush(stdout);
+						scanf("%d", &a);
+						ingresarDinero(a,&cuenta1 );
+						printf("El dinero actualizado: %i\n\n", cuenta1.liquidez);
+						break;
+					case 2:
+//						printf("El dinero actual: %i\n", buscarCuenta1(&cu, cliente).liquidez);
+//						printf("Introduce el importe: \n");
+//						fflush(stdin);
+//						scanf("%d", &a);
+//						cuent = buscarCuenta1(&cu, cliente);
+//						sacarDinero(a, &cuent);
+//						actualizarCuenta(&cu,
+//								buscarCuenta1(&cu, cliente).cliente, cuent);
+//						sacarDinero(a, &cuent);
+//						printf("El dinero actualizado: %i\n\n",
+//								buscarCuenta1(&cu, cliente).liquidez);
+//						fflush(stdout);
+						printf("El dinero actual: %i\n", cuenta1.liquidez);
+						printf("Introduce el importe: \n");
+						fflush(stdout);
+						scanf("%d", &a);
+						sacarDinero(a,&cuenta1);
+						printf("El dinero actualizado: %i\n\n", cuenta1.liquidez);
+
+						break;
+					default:
+						break;
 					}
 				} while (opcu != 3);
 			} else {
@@ -120,62 +137,64 @@ int main(void) {
 					scanf("%d", &opct);
 //				fflush(stdout);
 					switch (opct) {
-						case 1:
-	//					fflush(stdout);
-							printf("Introduce el cliente: \n");
-							printf("Introduce la liquidez: \n");
-							fflush(stdout);
-							scanf("%d %d", &a, &b);
-	//					fflush(stdout);
-							anadirCuenta(&cu, b, a);
-							break;
-						case 2:
-							printf("Introduce el cliente: \n");
-							fflush(stdout);
-							scanf("%d", &a);
-	//					fflush(stdout);
-							eliminarCuenta1(&cu, a);
-							break;
-						case 3:
-	//					fflush(stdout);
-							printf("Introduce el cliente A: \n");
-							fflush(stdout);
-							scanf("%d", &a);
-							printf("Introduce el cliente B: \n");
-							fflush(stdout);
-							scanf("%d", &b);
-							printf("Introduce el importe: \n");
-							fflush(stdout);
-							scanf("%d", &c);
-							//fflush(stdout);
-							//scanf("%d %d %d", &a, &b, &c);
-	//					fflush(stdout);
-							transaccion(&cu, a, b, c);
-							break;
-						case 4:
-	//					fflush(stdout);
-							printf("Introduce el cliente: \n");
-							fflush(stdout);
-							scanf("%d", &a);
-	//					fflush(stdout);
-							buscarCuenta(&cu, a);
-							break;
-						case 5:
-							//escribir a fichero
-							pf = fopen("SALIDA.TXT", "w");
-							if (pf != (FILE*) NULL) {
-								fprintf(pf, "Numero de cuentas actual: %i \n",
-										cu.numCuentas);
-								for (i = 0; i < cu.numCuentas; i++) {
-									int a = cu.cuentas[i].cliente;
-									int b = cu.cuentas[i].liquidez;
-									fprintf(pf, "Cliente: %i \t Saldo: %i\n", a, b);
-								}
+					case 1:
+//					fflush(stdout);
+						printf("Introduce el cliente: \n");
+						fflush(stdout);
+						scanf("%d", &a);
+						printf("Introduce la liquidez: \n");
+						fflush(stdout);
+						scanf("%d", &b);
+//					fflush(stdout);
+						anadirCuenta(&cu, b, a);
+						break;
+					case 2:
+						printf("Introduce el cliente: \n");
+						fflush(stdout);
+						scanf("%d", &a);
+//					fflush(stdout);
+						eliminarCuenta1(&cu, a);
+						break;
+					case 3:
+//					fflush(stdout);
+						printf("Introduce el cliente A: \n");
+						fflush(stdout);
+						scanf("%d", &a);
+						printf("Introduce el cliente B: \n");
+						fflush(stdout);
+						scanf("%d", &b);
+						printf("Introduce el importe: \n");
+						fflush(stdout);
+						scanf("%d", &c);
+						//fflush(stdout);
+						//scanf("%d %d %d", &a, &b, &c);
+//					fflush(stdout);
+						transaccion(&cu, a, b, c);
+						break;
+					case 4:
+//					fflush(stdout);
+						printf("Introduce el cliente: \n");
+						fflush(stdout);
+						scanf("%d", &a);
+//					fflush(stdout);
+						buscarCuenta(&cu, a);
+						break;
+					case 5:
+						//escribir a fichero
+						pf = fopen("SALIDA.TXT", "w");
+						if (pf != (FILE*) NULL) {
+							fprintf(pf, "Numero de cuentas actual: %i \n",
+									cu.numCuentas);
+							for (i = 0; i < cu.numCuentas; i++) {
+								int a = cu.cuentas[i].cliente;
+								int b = cu.cuentas[i].liquidez;
+								fprintf(pf, "Cliente: %i \t Saldo: %i\n", a, b);
 							}
-							fclose(pf);
-							break;
-						default:
-							break;
+						}
+						fclose(pf);
+						break;
+					default:
+						break;
 					}
 				} while (opct != 6);
 			} else {
